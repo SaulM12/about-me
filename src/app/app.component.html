@@ -1,0 +1,136 @@
+<header class="surface-ground z-5 px-3 h-4rem sticky top-0 justify-content-between grid grid-nogutter">
+  <nav class="col-8 hidden md:flex justify-content-evenly align-content-end" aria-label="">
+    <button (click)="scroll(first)" pButton pRipple type="button" label="Conocimientos" href=""
+      class="p-button-secondary p-button-text">
+    </button>
+    <button (click)="scroll(pr)" pButton pRipple type="button" label="Proyectos"
+      class="p-button-secondary p-button-text">
+    </button>
+    <button (click)="scroll(ct)" pButton pRipple type="button" label="Contacto"
+      class="p-button-secondary p-button-text">
+    </button>
+  </nav>
+  <nav class="col-8 flex md:hidden justify-content-start align-content-start p-1" aria-label="">
+    <button type="button" class="p-button-primary p-button-text" pButton icon="pi pi-bars" label=""
+      (click)="menu.toggle($event)"></button>
+    <p-menu #menu [popup]="true" class="" [appendTo]="navi" [model]="items"></p-menu>
+  </nav>
+  <div class="col-4 flex justify-content-end align-items-center pt-1">
+    <a pRipple
+      class="flex align-items-center no-underline  justify-content-center border-circle text-500  cursor-pointer transition-colors transition-duration-150">
+      <i class="pi pi-sun mr-2 font-bold" style="font-size: 1.4rem"></i>
+      <p-inputSwitch [(ngModel)]="themeSelection" (onChange)="changeTheme($event.checked)">
+      </p-inputSwitch>
+      <i class="pi pi-moon ml-2" style="font-size: 1.4rem"></i>
+    </a>
+  </div>
+</header>
+<div #navi class="grid grid-nogutter justify-content-center">
+  <article
+    class="personal-info col-11 md:col-5 lg:col-7 flex flex-column justify-content-center align-items-center text-center">
+    <h1 class="text-5xl md:text-6xl font-bold">Hola, soy Saul Espinoza </h1>
+    <h2 class="font-medium hellow">
+      Estudiante de Ingeniería de Software
+    </h2>
+    <div class="font-medium mt-3">
+      <p-chip label="Desarrollo web" styleClass="mr-2 custom-chip mb-2 md:mb-0"></p-chip>
+      <p-chip label="Inteligencia de negocios" styleClass="mr-2 mb-2 md:mb-0 custom-chip"></p-chip>
+    </div>
+    <a href="mailto:souldevec@gmail.com?subject=Informaci%C3%B3n" pButton pRipple type="button" label="Contactar"
+      class="text-xl p-button-success mt-4 contact-button" target="_blank"></a>
+  </article>
+  <div class="col-12 md:col-7 lg:col-5 personal-image flex justify-content-center align-items-center">
+    <img src="../assets/logo.png" alt="Soul Dev logo" class="logo" />
+    
+    <div class="logo-hover absolute align-items-center justify-content-center">
+      <h1>Soul Dev</h1>
+      <p class="text-md md:text-lg text-justify">En abril de 2022 decidí empezar a realizar videos de Programación Web principalmente enfocados a enseñar y motivar.
+      </p>
+      <i class="pi pi-info-circle absolute top-50 ml-2 info" style="font-size: 2rem" ></i>
+    </div>
+
+  </div>
+
+</div>
+<p-divider align="left" styleClass="font-bold">
+  <h2 #first>Conocimientos</h2>
+</p-divider>
+<section class="grid" id="one">
+  <div class="col-6 md:col-3 mb-3 flex-column flex align-items-center knowledge" *ngFor="let knowledge of knowledges">
+    <span class="p-1 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px;">
+      <img src={{knowledge.img}} alt="{{knowledge.name}}" height="90" >
+    </span>
+    <h2 class="text-900 mb-3 font-medium text-2xl knowledge-name">
+      {{knowledge.name}}
+    </h2>
+  </div>
+</section>
+<p-divider align="center" styleClass="font-bold">
+  <h2 #pr>Proyectos</h2>
+</p-divider>
+<section>
+  <p-carousel [value]="proyects" styleClass="custom-carousel px-0 md:px-2" [numVisible]="2" [numScroll]="1" [circular]="true" [autoplayInterval]="3500" [responsiveOptions]="responsiveOptions">
+    <ng-template let-proyect pTemplate="item">
+        <div class="mr-0 lg:mr-3 mb-2 mt-2 ml-1 shadow-3 surface-card">
+            <a  href={{proyect.link}} target="_blank">
+                <div>
+                    <img src={{proyect.img}} [alt]="proyect.name" class="proyect-image" />
+                </div>
+                <div class="px-3 pb-3">
+                    <h4 class="mb-1 text-xl font-semibold ">{{proyect.name}}</h4>
+                    <span class="mt-0 mb-3 text-lg">{{proyect.description}}</span>
+                </div>
+              </a>
+        </div>
+    </ng-template>
+</p-carousel>
+<div class="flex justify-content-center">
+  <p-timeline [value]="events" layout="horizontal" align="top" class="hidden md:flex">
+    <ng-template pTemplate="marker" let-event>
+      <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
+        <i [ngClass]="event.icon"></i>
+      </span>
+    </ng-template>
+    <ng-template pTemplate="content" let-event>
+      <div class="flex flex-column px-2 h-10rem md:h-4rem">
+        <span class="text-xl font-semibold">{{event.title}} </span>
+        <span class="text-lg mt-1">{{event.description}} </span>
+      </div>
+    </ng-template>
+  </p-timeline>
+  <p-timeline [value]="events" align="top" class="flex md:hidden">
+    <ng-template pTemplate="marker" let-event>
+      <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
+        <i [ngClass]="event.icon"></i>
+      </span>
+    </ng-template>
+    <ng-template pTemplate="content" let-event>
+      <div class="flex flex-column p-3 w-12rem">
+        <span class="text-xl font-semibold">{{event.title}} </span>
+        <span class="text-lg mt-1">{{event.description}} </span>
+      </div>
+    </ng-template>
+  </p-timeline>
+</div>
+</section>
+<p-divider align="left" styleClass="font-bold">
+  <h2 #ct>Contacto</h2>
+</p-divider>
+<section class="flex flex-column px-2 pb-4  mb-4 md:px-5 justify-content-evenly align-items-center">
+  <span class="text-2xl mb-4">Redes sociales, GitHub y contacto</span>
+  <div class="contact-container flex justify-content-evenly min-w-full">
+    <a class="icon-container shadow-2" href="mailto:souldevec@gmail.com?subject=Informaci%C3%B3n" target="_blank">
+      <i class="pi pi-envelope icon linkedin"></i>
+    </a>
+    <a class="icon-container shadow-2" href="https://www.tiktok.com/@souldevcd?_t=8VIzoX6oW3S&_r=1" target="_blank">
+      <img src="../assets/tk.png" height="45px" alt="" *ngIf="themeSelection">
+      <img src="../assets/tk2.png" height="45px" alt="" *ngIf="!themeSelection">
+    </a>
+    <a class="icon-container shadow-2" href="https://www.instagram.com/soul_dev.ec/" target="_blank">
+      <img src="../assets/insta.png" height="45px" alt="">
+    </a>
+    <a class="icon-container shadow-2" href="https://github.com/SaulM12" target="_blank">
+      <i class="pi pi-github icon github"></i>
+    </a>
+  </div>
+</section>
