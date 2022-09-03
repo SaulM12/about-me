@@ -75,7 +75,7 @@ export class AppComponent {
     },
     {
       name: "Git",
-      img: "../assets/git.png"
+      img: "https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fgit.png?alt=media&token=889702a0-a45e-4213-b7d8-3005e546fd47"
     },
     {
       name: "React",
