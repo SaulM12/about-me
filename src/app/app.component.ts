@@ -107,25 +107,25 @@ export class AppComponent {
       link: 'https://turism-app-f8d5c.web.app/',
       name: 'Reservas a sitios turísticos',
       description: 'Angular, Spring Boot y PostgreSQL',
-      img: '../assets/turism.png'
+      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fturism.png?alt=media&token=8ee2fa10-22d7-4b64-a55d-89adb036cc20'
     },
     {
       link: 'https://dev-store-demo.web.app/',
       name: 'Carrito de compras básico',
       description: 'React, Spring Boot y PostgreSQL',
-      img: '../assets/shop.png'
+      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fshop.png?alt=media&token=d45efdf7-2581-42a0-8fcc-625817573532'
     },
     {
       link: 'https://www.youtube.com/channel/UCtypUtmtx6P8kImx_97pyDQ',
       description: 'Tutoriales de programación web',
       name: 'Canal de YouTube',
-      img: '../assets/youtube.png'
+      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fyoutube.png?alt=media&token=01d553ec-3af7-4bfe-b54f-882560c0fb89'
     },
     {
       link: 'https://play.google.com/store/apps/details?id=com.SmDev.UDLAparking',
       name: 'Aplicación de Parking',
       description: 'React Native con Firebase',
-      img: '../assets/apk.png'
+      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fapk.png?alt=media&token=c97cb1d8-a864-40d4-9243-b6de9f9cbecd'
     },
   ]
   constructor(@Inject(DOCUMENT) private document: Document) {
