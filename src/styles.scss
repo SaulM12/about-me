@@ -1,21 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-    margin-top: 0;
-    font-family: var(--font-family);
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Poppins"), local("Poppins-Regular"),
+    url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
-h1{
-    padding: 0;
-    margin: 0;
+
+* {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
 }
-h2, h3{
-    padding: 0;
-    margin: 0;
+body {
+  margin: 0;
+  background-color: rgb(16, 21, 29)!important;
 }
-a{
-    text-decoration: none;
-    color: var(--surface-900);
+h1 {
+  padding: 0;
+  margin: 0;
 }
-p{
-    padding: 0;
-    margin: 0;
+h2,
+h3 {
+  padding: 0;
+  margin: 0;
 }
+a {
+  text-decoration: none;
+  color: var(--surface-900);
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.roboto-txt {
+  font-family: 'Roboto Mono', monospace;
+}
+

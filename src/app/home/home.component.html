@@ -1,0 +1,339 @@
+<main class="px-3 md:px-6 lg:px-8 pb-5">
+  <header
+    class="flex justify-content-end align-items-center fixed left-0 top-0 z-5 w-full"
+  >
+    <nav class="blur-bg pr-2 md:px-3 py-2 pl-2 margin-neon">
+      <ul class="flex list-none gap-4">
+        <li>
+          <button
+            (click)="scroll(experience)"
+            class="nav-link md:text-base text-sm roboto-txt"
+          >
+            Experiencia
+          </button>
+        </li>
+        <li>
+          <button
+            (click)="scroll(software)"
+            class="nav-link md:text-base text-sm roboto-txt"
+          >
+            Desarrollo Web
+          </button>
+        </li>
+        <li>
+          <button
+            (click)="scroll(projects)"
+            class="nav-link md:text-base text-sm roboto-txt"
+          >
+            Proyectos
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section
+    id="introducction"
+    class="container relative h-screen flex flex-column flex-wrap justify-content-center gap-4 md:gap-0"
+  >
+    <h1 class="text-5xl md:text-7xl roboto-txt">Hola, soy Saul</h1>
+    <span class="text-xl md:text-2xl roboto-txt">
+      Ingeniero de Software / Desarrollador web
+    </span>
+    <span class="text-2xl md:text-4xl roboto-txt">
+      Mi misión es simplificar la vida a los usuarios y compartir mis
+      conocimientos.
+    </span>
+    <div class="flex flex-wrap justify-content-center w-full mt-4 gap-4">
+      <a
+        class="main-btn link-color roboto-txt"
+        href="https://www.linkedin.com/in/saul-moncayo-espinoza-428b63253"
+        target="_blank"
+      >
+        Di Hola! <i class="pi pi-linkedin text-xl"></i>
+      </a>
+      <a
+        class="main-btn git-color roboto-txt"
+        href="https://github.com/SaulM12"
+        target="_blank"
+      >
+        GitHub <i class="pi pi-github text-2xl"></i>
+      </a>
+    </div>
+    <button id="btn-scroll" class="btn-scroll" (click)="scroll(experience)">
+      <span></span><span></span><span></span>
+    </button>
+  </section>
+  <section #experience class="flex flex-column min-h-screen gap-4">
+    <div class="flex justify-content-center w-full pt-5" #parallaxContainer>
+      <h1 class="text-4xl" style="transform: translateY(-50px)" #parallaxText>
+        Experiencia Relevante
+      </h1>
+    </div>
+    <p-timeline
+      [value]="eventList"
+      align="alternate"
+      styleClass="customized-timeline hidden md:flex flex-wrap"
+    >
+      <ng-template pTemplate="marker" let-event>
+        <span class="custom-marker shadow-2">
+          <i [ngClass]="event.icon" class="icon-time"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event>
+        <div
+          class="experience-card border-gray-700 border-1 border-solid py-4 px-6 flex flex-column"
+        >
+          <h2>{{ event.title }}</h2>
+          <p class="text-xl text-secondary">
+            {{ event.description }}
+          </p>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="opposite" let-event>
+        <div
+          class="svg-container h-full w-full flex flex-wrap justify-content-center align-items-center gap-4"
+        >
+          <div
+            *ngFor="let svgString of event.svg"
+            [innerHTML]="getSafeSVG(svgString)"
+          ></div>
+        </div>
+      </ng-template>
+    </p-timeline>
+    <div class="md:hidden flex flex-column w-full gap-3">
+      <div
+        *ngFor="let event of eventList"
+        class="experience-card border-gray-700 border-1 border-solid py-4 px-3 flex flex-column"
+      >
+        <h2 class="text-xl">{{ event.title }}</h2>
+        <p class="text-sm md:text-xl">
+          {{ event.description }}
+        </p>
+        <div
+          class="svg-container h-full w-full flex flex-wrap justify-content-center align-items-center mt-4 gap-4"
+        >
+          <div
+            *ngFor="let svgString of event.mobileSvg"
+            [innerHTML]="getSafeSVG(svgString)"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    #software
+    class="flex flex-column gap-4 py-4 text-center align-items-center"
+  >
+    <h2 class="text-4xl">Sitios y aplicaciones web</h2>
+    <p class="w-full md:w-8 text-xl text-secondary">
+      Un sitio web innovador y con un diseño llamativo para presentar tus
+      negocio o servicios profesionales o una aplicación web que te permita
+      automatizar procesos y gestionar digitalmente lo que necesites.
+    </p>
+    <a
+      href="https://servicios.souldevec.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="link-text-btn mb-4"
+      >Conoce a detalle -></a
+    >
+    <img
+      src="../../assets/one-page.png"
+      class="w-full md:w-6"
+      style="opacity: 0"
+      alt=""
+      srcset=""
+      #appsImg
+    />
+  </section>
+  <section #projects class="flex flex-column gap-4 py-4 text-center">
+    <h2 class="text-4xl">Proyectos interesantes de programación</h2>
+    <article class="grid grid-nogutter w-full mt-6">
+      <div
+        class="col-12 md:col-7 lg:col-8 card-bg text-left flex justify-content-center align-items-center border-gray-700 border-1 border-solid py-3 px-3 md:py-6 md:px-6"
+      >
+        <img
+          class="w-full"
+          src="../../assets/app.jpg"
+          alt=""
+          srcset=""
+        />
+      </div>
+
+      <div
+        class="left-proyect-card card-bg col-12 md:col-5 lg:col-4 text-left flex flex-column border-gray-700 border-1 border-solid py-4 px-3 md:px-5 gap-3"
+      >
+        <h3 class="text-2xl md:text-4xl">App Infracciones de Tránsito Ec</h3>
+        <p class="text-secondary">
+          Esta aplicación presenta un listado disponible sin conexión de las
+          infracciones de tránsito que existen en Ecuador filtradas de acuerdo a
+          su categoría y con un buscador por palabras claves o número de
+          artículo.
+        </p>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.souldevec.transitoec"
+          target="_blank"
+          class="link-text-btn"
+          rel="noopener noreferrer"
+          >Ver proyecto -></a
+        >
+      </div>
+    </article>
+    <article class="grid grid-nogutter w-full">
+      <div
+        class="left-proyect-card card-bg col-12 md:col-5 lg:col-4 text-left flex flex-column flex-order-1 md:flex-order-0 border-gray-700 border-1 border-solid py-4 px-3 md:px-5 gap-3"
+      >
+        <h3 class="text-2xl md:text-4xl">Base de datos en tiempo real</h3>
+        <p class="text-secondary">
+          Un proyecto basado en programación reactiva donde puedes obtener
+          actualizaciones y eventos en tiempo real desde el servidor hacia el
+          cliente de Angular. Para su implementación, se utilizan tecnologías
+          como Docker, MongoDB, Spring Boot y Angular.
+        </p>
+        <a
+          href="https://www.youtube.com/watch?v=mU-7fKOCZVc&t=1174s"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-text-btn"
+          >Ver proyecto -></a
+        >
+      </div>
+      <div
+        class="col-12 md:col-7 lg:col-8 flex-order-0 md:flex-order-1 card-bg text-left flex justify-content-center align-items-center border-gray-700 border-1 border-solid py-3 px-2 md:py-0 md:px-3"
+      >
+        <img
+          #projectImg
+          style="opacity: 0.7; scale: 1"
+          class="w-full"
+          src="../../assets/RealTime.png"
+          alt=""
+          srcset=""
+        />
+      </div>
+    </article>
+    <article class="grid grid-nogutter w-full mt-6">
+      <div
+        class="col-12 md:col-7 lg:col-8 card-bg text-left flex justify-content-center align-items-center border-gray-700 border-1 border-solid py-3 px-3 md:py-6 md:px-6"
+      >
+        <div
+          class="mockup-card flex flex-column border-gray-700 border-1 border-solid border-round w-full px-2 pb-2"
+        >
+          <div class="flex gap-2 py-3">
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span class="circle"></span>
+          </div>
+          <div
+            #loginCardContainer
+            class="content flex flex-grow-1 align-items-center justify-content-center border-round card-bg"
+          >
+            <demo-login-card class="w-full md:w-7 lg:w-5"></demo-login-card>
+          </div>
+        </div>
+      </div>
+      <div
+        class="left-proyect-card card-bg col-12 md:col-5 lg:col-4 text-left flex flex-column border-gray-700 border-1 border-solid py-4 px-3 md:px-5 gap-3"
+      >
+        <h3 class="text-2xl md:text-4xl">Autenticación con JWT</h3>
+        <p class="text-secondary">
+          Una API desarrollada en Spring Boot que posibilita la autenticación de
+          usuarios mediante JWT. Estas credenciales se establecen directamente
+          desde el servidor en cookies marcadas como HttpOnly
+        </p>
+        <a
+          href="https://github.com/SaulM12/LastSpringSecurityJWT/tree/cookies"
+          target="_blank"
+          class="link-text-btn"
+          rel="noopener noreferrer"
+          >Ver proyecto -></a
+        >
+      </div>
+    </article>
+    <div
+      class="flex flex-column w-full justify-content-center align-items-center gap-2 mt-4"
+    >
+      <h3 class="text-4xl">Más proyectos de programación</h3>
+      <p class="text-xl">
+        ¡Revise otros proyectos interesantes visitando mi perfil en GitHub o mi
+        canal de YouTube!
+      </p>
+      <div class="flex gap-4 align-items-center">
+        <a
+          href="https://github.com/SaulM12"
+          target="_blank"
+          class="mt-2 top-btn"
+          rel="noopener noreferrer"
+          ><i class="pi pi-github github text-8xl"></i
+        ></a>
+        <a
+          href="https://www.youtube.com/@souldev7502"
+          target="_blank"
+          class="mt-2 top-btn"
+          rel="noopener noreferrer"
+        >
+          <svg
+            height="112px"
+            width="112px"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle cx="24" cy="24" r="20" fill="#9d0b0b"></circle>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M35.3005 16.3781C35.6996 16.7772 35.9872 17.2739 36.1346 17.8187C36.9835 21.2357 36.7873 26.6324 36.1511 30.1813C36.0037 30.7261 35.7161 31.2228 35.317 31.6219C34.9179 32.021 34.4212 32.3086 33.8764 32.456C31.8819 33 23.8544 33 23.8544 33C23.8544 33 15.8269 33 13.8324 32.456C13.2876 32.3086 12.7909 32.021 12.3918 31.6219C11.9927 31.2228 11.7051 30.7261 11.5577 30.1813C10.7038 26.7791 10.9379 21.3791 11.5412 17.8352C11.6886 17.2903 11.9762 16.7936 12.3753 16.3945C12.7744 15.9954 13.2711 15.7079 13.8159 15.5604C15.8104 15.0165 23.8379 15 23.8379 15C23.8379 15 31.8654 15 33.8599 15.544C34.4047 15.6914 34.9014 15.979 35.3005 16.3781ZM27.9423 24L21.283 27.8571V20.1428L27.9423 24Z"
+                fill="white"
+              ></path>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section
+    #contact
+    class="flex flex-column w-full justify-content-center align-items-center gap-4 mt-4"
+  >
+    <p-divider align="center" class="w-full">
+      <span class="tag text-2xl">Envíame un mensaje</span>
+    </p-divider>
+    <p class="text-secondary text-xl w-full md:w-6">
+      Mi bandeja de entrada siempre está abierta. Ya sea que tenga una pregunta
+      o simplemente quiera saludar, ¡haré todo lo posible para responder!
+    </p>
+    <div class="flex justify-content-center gap-4">
+      <a
+        href="https://www.tiktok.com/@souldevcd?_t=8VIzoX6oW3S&_r=1"
+        class="icon-container"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="../../assets/tk.webp" alt="" height="48px" width="48px" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/saul-moncayo-espinoza-428b63253/"
+        class="icon-container"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="pi pi-linkedin text-5xl linkedin-icon"></i>
+      </a>
+      <a
+        href="https://www.instagram.com/soul_dev.ec/"
+        class="icon-container"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="../../assets/insta.webp" alt="" height="48px" width="48px" />
+      </a>
+    </div>
+  </section>
+</main>

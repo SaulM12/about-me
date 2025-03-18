@@ -1,0 +1,162 @@
+.login-card {
+  background-color: #27303d;
+  border-radius: 15px;
+  height: 370px;
+}
+
+.card-input {
+  background-color: #06080c;
+  border: none;
+  padding: 0px 8px;
+  color: rgb(112, 112, 112);
+  border-radius: 5px;
+  height: 40px;
+}
+
+.envelope {
+  border: 1px solid white;
+  border-top: 1px solid lightblue;
+  height: 120px;
+  width: 200px;
+  background-color: white;
+  position: relative;
+}
+
+.seal-flap {
+  position: absolute;
+  border-top: 50px solid lightblue;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+}
+
+.btn-test {
+  background-color: #06080c;
+  border: none;
+  cursor: pointer;
+  color: #dfdfdf;
+  border-radius: 0px;
+  padding: 8px 25px;
+  border-width: 1.5px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #1c5ae0, #1cb5e0) 1;
+  box-shadow: 10px 0px 20px 5px #1c5ae021;
+  animation: btn-animation 6s infinite;
+  transition: background-color 0.4s, color .4s;
+  &:hover {
+    background-color: #000000;
+    color: white;
+  }
+}
+
+.checkmark {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: drawCheckmark 4s infinite;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: rgba(5, 114, 206, 0.2);
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-bar-value {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(5, 114, 206);
+  animation: indeterminateAnimation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+
+.red {
+  color: #ff4287;
+}
+
+.purple {
+  color: #d63aff;
+}
+
+.light-blue {
+  color: #00b9f1;
+}
+
+.line {
+  height: 10px;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.jwt-text {
+  display: block;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.typing {
+  min-height: 120px;
+  display: block;
+  word-wrap: break-word;
+  width: 100%;
+  overflow: hidden;
+  animation: fadeIn 1s, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes btn-animation {
+  16.667%,
+  100% {
+    border-image: linear-gradient(to right, #1c5ae0, #1cb5e0) 1;
+    box-shadow: 10px 0px 20px 5px #1c5ae021;
+  }
+  50% {
+    border-image: linear-gradient(to right, #5106ff, #ff2819) 1;
+    box-shadow: 10px 0px 20px 5px #ff281923;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: limegreen;
+  }
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  40% {
+    transform: translateX(0) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.5);
+  }
+}
+
+@keyframes drawCheckmark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

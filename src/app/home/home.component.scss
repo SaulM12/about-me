@@ -1,0 +1,249 @@
+main {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background-size: 200px 200px;
+  background-image: radial-gradient(circle, #2e3c51 2.5px, transparent 0);
+  animation: moveUpwards 24s linear infinite;
+}
+
+.main-btn {
+  padding: 15px 25px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 3px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-color {
+  background-color: #1e42b8;
+  transition: background-color 0.4s;
+  &:hover {
+    background-color: #0d2986;
+  }
+}
+
+.git-color {
+  background-color: #541eb8;
+  transition: background-color 0.4s;
+  &:hover {
+    background-color: #4210a0;
+  }
+}
+
+.btn-scroll {
+  background-color: transparent;
+  padding-top: 50px;
+  color: rgb(255, 255, 255);
+  border: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5%;
+}
+
+.btn-scroll span {
+  position: absolute;
+  top: 0;
+  width: 24px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 24px;
+  border-left: 4px solid rgb(255, 255, 255);
+  border-bottom: 4px solid rgb(255, 255, 255);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb07 2s infinite;
+  animation: sdb07 2s infinite;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+.btn-scroll span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.btn-scroll span:nth-of-type(2) {
+  top: 16px;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+}
+
+.icon-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  color: #5cf4ff;
+}
+
+.left-proyect-card {
+  height: max-content;
+}
+
+.experience-card {
+  background-color: #10151d;
+}
+
+.mockup-card {
+  background-color: #0a0d13;
+  min-height: 600px;
+  @media screen and (max-width: 600px) {
+    min-height: auto;
+  }
+}
+
+.circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  background-color: #2e3c51;
+}
+
+.github {
+  color: #6637ac;
+  transition: color 0.4s;
+  &:hover {
+    color: #7844c7;
+  }
+}
+
+.icon-container {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  margin: 0px 16px 0px 0px;
+  transition: transform 0.4s;
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.top-btn{
+  transition: transform 0.4s;
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.linkedin-icon {
+  color: #0e76a8;
+}
+
+.blur-bg{
+  background-color: #161e29;
+  backdrop-filter: blur(4px);
+  border-bottom-left-radius: 5px;
+}
+
+.margin-neon{
+  border-width: 0px 0px 1.5px 1.5px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #1c3e83, #0e5b6e) 1;
+  box-shadow: 10px 0px 20px 5px #06133121;
+  animation: neon-animation 6s infinite;
+}
+
+.nav-link{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color .4s;
+  &:hover{
+    color: rgb(179, 224, 245);
+  }
+}
+
+::ng-deep .p-divider .p-divider-content {
+  background-color: #040b16;
+}
+
+::ng-deep .p-divider.p-divider-horizontal:before {
+  border-top: 1px #9adaff;
+}
+
+.svg-container {
+  width: 100px; // Ajusta el tamaño según sea necesario
+  height: 100px; // Ajusta el tamaño según sea necesario
+  div:nth-child(odd) {
+    animation: fadeInOut 3s infinite;
+  }
+  div:nth-child(even) {
+    animation: fadeInOut 3s infinite;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+
+@keyframes neon-animation {
+  16.667%,
+  100% {
+    border-image: linear-gradient(to right, #1c3e83, #0e5b6e) 1;
+    box-shadow: 10px 0px 20px 5px #06133121;
+  }
+  50% {
+    border-image: linear-gradient(to right, #3f12a1, #0c3080) 1;
+    box-shadow: 10px 0px 20px 5px #24060323;
+  }
+}
+
+@-webkit-keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes moveUpwards {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -200px;
+  }
+}

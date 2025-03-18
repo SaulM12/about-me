@@ -1,1 +1,57 @@
 @import "primeng/resources/themes/lara-dark-blue/theme.css";
+:root {
+  --surface-ground: #0d1117;
+  --primary-color: #183697;
+  --secondary-bg: #181f2b;
+  --card-bg: #10151d;
+  --text-secondary-color:#d8d8d8b2;
+}
+.text-secondary {
+  color: var(--text-secondary-color);
+}
+
+.card-bg {
+  background-color: var(--card-bg);
+}
+
+.btn-primary {
+  border: 0px !important;
+  color: #0d1117 !important;
+  background-color: #4bbfb6 !important;
+}
+.btn-primary:hover {
+  color: #0d1117 !important;
+  background-color: #62faed !important;
+}
+.p-button-outlined {
+  font-size: 1.125rem !important;
+  color: #4bbfb6 !important;
+  background-color: #0d1117 !important;
+}
+.p-button-outlined:hover {
+  color: #64fff2 !important;
+  background-color: #1e2735 !important;
+}
+
+.link-text-btn {
+  padding: 10px 25px;
+  font-weight: 600;
+  border-radius: 53px;
+  display: flex;
+  max-width: fit-content;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  color: rgb(218, 218, 218);
+  font-size: 1.1rem;
+  background-color: var(--primary-color);
+  transition: color .4s, background-color .4s;
+  &:hover{
+    color: white;
+    background-color: #224ace;
+  }
+}
+
+.p-timeline .p-timeline-event-connector {
+  background-color: #464646;
+}

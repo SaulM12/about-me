@@ -1,53 +1,83 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MenuItem, PrimeIcons } from 'primeng/api';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+
+const style1 = style({
+  opacity: 1,
+});
+
+const style2 = style({
+  opacity: 0,
+});
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('foobar', [
+      state('show', style1),
+      state('hide', style2),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('850ms ease-in')),
+    ]),
+  ],
 })
 export class AppComponent {
   title = 'personal-app';
   themeSelection: boolean = false;
-  @ViewChild('first') first: ElementRef | undefined;
-  @ViewChild('pr') pr: ElementRef | undefined;
-  @ViewChild('ct') ct: ElementRef | undefined;
+  @ViewChild('navi') navi: ElementRef | undefined;
+  @ViewChild('carousel-container') business: ElementRef | undefined;
+  @ViewChild('projectDiv') projectDiv: ElementRef | undefined;
+  @ViewChild('contact') contact: ElementRef | undefined;
   responsiveOptions = [
     {
-        breakpoint: '1024px',
-        numVisible: 3,
-        numScroll: 1
+      breakpoint: '1024px',
+      numVisible: 3,
+      numScroll: 1
     },
     {
-        breakpoint: '768px',
-        numVisible: 1,
-        numScroll: 1
+      breakpoint: '768px',
+      numVisible: 1,
+      numScroll: 1
     },
     {
-        breakpoint: '560px',
-        numVisible: 1,
-        numScroll: 1
+      breakpoint: '560px',
+      numVisible: 1,
+      numScroll: 1
     }
-];
+  ];
   items: MenuItem[] = [
     {
-      label: 'Conocimientos', icon: 'pi pi-fw pi-book',
+      label: 'Acerca de mí', icon: 'pi pi-fw pi-id-card',
       command: () => {
-        this.scroll(this.first?.nativeElement);
+        this.scroll(this.navi?.nativeElement);
+      }
+    },
+    {
+      label: 'Tu negocio en internet', icon: 'pi pi-fw pi-globe',
+      command: () => {
+        this.scroll(this.business?.nativeElement);
       }
     },
     {
       label: 'Proyectos', icon: 'pi pi-fw pi-images',
       command: () => {
-        this.scroll(this.pr?.nativeElement);
+        this.scroll(this.projectDiv?.nativeElement);
       }
     },
     {
       label: 'Contacto', icon: 'pi pi-fw pi-envelope',
       command: () => {
-        this.scroll(this.ct?.nativeElement);
+        this.scroll(this.contact?.nativeElement);
       }
-    }
+    },
   ];
   knowledges: any[] = [
     {
@@ -78,70 +108,100 @@ export class AppComponent {
       img: "https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fgit.png?alt=media&token=889702a0-a45e-4213-b7d8-3005e546fd47"
     },
     {
-      name: "React",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+      name: "PostgreSQL",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1985px-Postgresql_elephant.svg.png"
     }
   ]
+
+  images = [
+    {
+      alt: '',
+      img: '../assets/one.png'
+    },
+    {
+      alt: '',
+      img: '../assets/five.png'
+    },
+    {
+      alt: '',
+      img: '../assets/two.png'
+    }
+  ]
+
   events = [
     {
       title: 'MEGA SANTAMARIA S.A.',
       description: 'Aplicaciones informáticas departamento TI',
       icon: PrimeIcons.DESKTOP,
-      color: '#3B82F6'
+      color: '#0041a8'
     },
     {
       title: 'BK del Ecuador',
       description: 'Desarrollador frontend en Angular',
       icon: PrimeIcons.DESKTOP,
-      color: '#3B82F6'
+      color: '#0041a8'
     },
     {
       title: 'Independiente',
       description: 'Desarrollador web y móvil',
       icon: PrimeIcons.DESKTOP,
-      color: '#3B82F6'
+      color: '#0041a8'
+    },
+    {
+      title: 'JA Servicios',
+      description: 'Desarrollador frontend Angular',
+      icon: PrimeIcons.DESKTOP,
+      color: '#107c73'
     },
   ]
-  proyects = [
+  projects = [
     {
-      link: 'https://turism-app-f8d5c.web.app/',
-      name: 'Reservas a sitios turísticos',
-      description: 'Angular, Spring Boot y PostgreSQL',
-      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fturism.png?alt=media&token=8ee2fa10-22d7-4b64-a55d-89adb036cc20'
+      link: 'https://play.google.com/store/apps/details?id=com.souldevec.transito',
+      name: 'Infracciones de tránsito EC',
+      technologies: 'ReactNative Expo TypeScript',
+      description: 'Aplicación móvil de infracciones de tránsito establecidas en el Código Orgánico Integral Penal (C.O.I.P) de Ecuador que realizar la búsqueda de las mismas por número de artículo o palabras clave.',
+      img: '../assets/infraec.png'
     },
     {
-      link: 'https://dev-store-demo.web.app/',
-      name: 'Carrito de compras básico',
-      description: 'React, Spring Boot y PostgreSQL',
-      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fshop.png?alt=media&token=d45efdf7-2581-42a0-8fcc-625817573532'
+      link: 'https://turism-app-f8d5c.web.app/',
+      name: 'Autenticación Spring Boot JWT',
+      technologies: 'JWT SpringBoot PostgreSQL',
+      description: 'Uno de mis proyectos más conocidos, una rest API desarrollada con Spring Boot que permite registrar y autenticar usuarios utilizando JWT.',
+      img: '../assets/turism.png'
     },
     {
       link: 'https://www.youtube.com/channel/UCtypUtmtx6P8kImx_97pyDQ',
-      description: 'Tutoriales de programación web',
+      technologies: 'YouTube',
+      description: 'Uno de mis pasatiempos es crear videos y tutoriales de programación web, actualmente tengo un canal en YouTube para subir dicho contenido.',
       name: 'Canal de YouTube',
-      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fyoutube.png?alt=media&token=01d553ec-3af7-4bfe-b54f-882560c0fb89'
-    },
-    {
-      link: 'https://play.google.com/store/apps/details?id=com.SmDev.UDLAparking',
-      name: 'Aplicación de Parking',
-      description: 'React Native con Firebase',
-      img: 'https://firebasestorage.googleapis.com/v0/b/miblog-d37b8.appspot.com/o/personal%2Fapk.png?alt=media&token=c97cb1d8-a864-40d4-9243-b6de9f9cbecd'
+      img: '../assets/yt.png'
     },
   ]
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    let theme = window.localStorage.getItem("theme")
-    if (theme) {
-      this.themeSelection = theme == 'dark' ? true : false
-      this.changeTheme(this.themeSelection)
-    }
+  innerWidth = window.innerWidth < 600;
+
+  constructor(private cdRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    this.cdRef.detectChanges();
   }
-  changeTheme(state: boolean) {
-    let theme = state ? 'dark' : 'light'
-    window.localStorage.setItem("theme", theme)
-    let themeLink = this.document.getElementById('app-theme') as HTMLLinkElement
-    themeLink.href = 'lara-' + theme + '-blue' + '.css'
-  }
+
   scroll(el: HTMLElement) {
     el.scrollIntoView({ behavior: 'smooth' });
   }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll(elementID: string) {
+    const componentPosition = document.getElementById(elementID)?.offsetTop;
+    const scrollPosition = window.scrollY;
+    if (scrollPosition >= componentPosition! - (window.innerWidth > 800 ? 550 : 850)) {
+      return 'show';
+    } else {
+      return 'hide';
+    }
+  }
+
+  openFile() {
+    window.open("https://saulm12.github.io/about-me/assets/SaulMoncayo.pdf");
+  }
+
 }
